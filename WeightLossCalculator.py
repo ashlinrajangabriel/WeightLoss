@@ -20,7 +20,16 @@ def weight_loss(weight, speed, terrain, calories_burned_per_mile, oats_calories,
     net_calories = oats_calories - total_calories_burned
     # Calculate the weight loss
     weight_loss = net_calories / 3500
-    return weight - weight_loss
+    # Check if weight loss is within the recommended range
+    if weight_loss < 0.23:
+        print('ss',weight - weight_loss)
+        return  str((weight - weight_loss) ) + "Weight loss is not sustainable"
+    elif weight_loss > 0.9:
+        return  str((weight - weight_loss) ) + "{ }Weight loss is harmful"
+    else:
+        return  str((weight - weight_loss) ) + "{ (weight - weight_loss) } Weight loss is normal"
+
+
 
 weight = 110
 speed = 5
@@ -29,4 +38,5 @@ calories_burned_per_mile = 100
 oats_calories = 2300
 days = 5
 
-print("Weight loss per week:", weight_loss(weight, speed, terrain, calories_burned_per_mile, oats_calories, days), "kg")
+#print("Weight loss per week:", weight_loss(weight, speed, terrain, calories_burned_per_mile, oats_calories, days), "kg")
+#weight_loss(weight, speed, terrain, calories_burned_per_mile, oats_calories, days)
